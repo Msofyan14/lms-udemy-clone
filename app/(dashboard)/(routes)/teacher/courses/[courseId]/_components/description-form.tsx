@@ -77,7 +77,16 @@ export const DescriptionForm = ({
           )}
         </Button>
       </div>
-      {!isEditing && <p className="text-sm mt-2">{initialData.description}</p>}
+      {!isEditing && (
+        <p
+          className={cn(
+            "text-sm mt-2",
+            !initialData.description && "text-slate-500 italic"
+          )}
+        >
+          {initialData.description || "No description"}
+        </p>
+      )}
       {isEditing && (
         <Form {...form}>
           <form
