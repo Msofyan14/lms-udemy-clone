@@ -40,8 +40,8 @@ export const CourseProgressButton = ({
         router.push(`/courses/${courseId}/chapters/${nextChapterId}`);
 
         toast.success("Progress updated");
-        router.refresh();
       }
+      router.refresh();
     } catch (error) {
       toast.error("Something went wrong");
     } finally {
