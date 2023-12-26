@@ -61,8 +61,6 @@ export const ChaptersForm = ({ initialData, courseId }: ChaptersFormProps) => {
   };
 
   const onReorder = async (updateData: { id: string; position: number }[]) => {
-    console.log(updateData);
-
     try {
       setIsUpdating(true);
 

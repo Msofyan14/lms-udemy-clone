@@ -31,20 +31,13 @@ export const ChapterList = ({ items, onReorder, onEdit }: ChapterListProps) => {
   }, [items]);
 
   const onDragEnd = (result: DropResult) => {
-    console.log("result", result);
-
     if (!result.destination) return;
 
     const items = Array.from(chapters);
 
     const [reorderedItem] = items.splice(result.source.index, 1);
 
-    console.log(reorderedItem);
-    console.log("items after reorder", items);
-
     items.splice(result.destination.index, 0, reorderedItem);
-
-    console.log("items result", items);
 
     setChapters(items);
 
@@ -52,8 +45,6 @@ export const ChapterList = ({ items, onReorder, onEdit }: ChapterListProps) => {
     const endIndex = Math.max(result.source.index, result.destination.index);
 
     const updatedChapters = items.slice(startIndex, endIndex + 1);
-
-    console.log("updatedChapters", updatedChapters);
 
     const bulkUpDateData = updatedChapters.map((chapter) => ({
       id: chapter.id,
