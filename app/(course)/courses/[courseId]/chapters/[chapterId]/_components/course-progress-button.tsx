@@ -37,10 +37,13 @@ export const CourseProgressButton = ({
       );
 
       if (!isCompleted && !nextChapterId) {
-        router.push(`/courses/${courseId}/chapters/${nextChapterId}`);
-
-        toast.success("Progress updated");
+        confetti.onOpen();
       }
+
+      if (!isCompleted && nextChapterId) {
+        router.push(`/courses/${courseId}/chapters/${nextChapterId}`);
+      }
+      toast.success("Progress updated");
       router.refresh();
     } catch (error) {
       toast.error("Something went wrong");
