@@ -1,6 +1,6 @@
 "use client";
 
-import { UserButton, useAuth } from "@clerk/nextjs";
+import { UserButton, auth, useAuth } from "@clerk/nextjs";
 import { usePathname } from "next/navigation";
 import { SearchInput } from "./search-input";
 import Link from "next/link";
@@ -10,6 +10,7 @@ import { isTeacher } from "@/lib/teacher";
 
 export const NavbarRoutes = () => {
   const { userId } = useAuth();
+
   const pathname = usePathname();
 
   const isTeacherPage = pathname?.startsWith("/teacher");
@@ -31,13 +32,13 @@ export const NavbarRoutes = () => {
               Exit
             </Button>
           </Link>
-        ) : (
+        ) : isTeacher(userId) ? (
           <Link href="/teacher/courses">
             <Button size="sm" variant="ghost">
               Teacher Mode
             </Button>
           </Link>
-        )}
+        ) : null}
       </div>
       <UserButton afterSignOutUrl="/" />
     </>
